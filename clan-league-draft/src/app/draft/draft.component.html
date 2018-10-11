@@ -1,9 +1,12 @@
 <mat-card>
   <form (submit)="AddCaptain(draftForm)" #draftForm="ngForm">
     <mat-form-field>
-      <input matInput type="text" ngModel required name="title" #title="ngModel">
-      <mat-error *ngIf="title.invalid">Enter a captain name</mat-error>
+      <input matInput type="text" ngModel required name="captain" #captain="ngModel">
+      <mat-error *ngIf="captain.invalid">Enter a captain name</mat-error>
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit">Add Captain</button>
   </form>
 </mat-card>
+<mat-grid-list [cols]="captainCount" rowHeight="3:1">
+  <mat-grid-tile *ngFor="let captain of captains">{{captain}}</mat-grid-tile>
+</mat-grid-list>

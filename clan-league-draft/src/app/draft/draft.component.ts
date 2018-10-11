@@ -8,7 +8,12 @@ import { NgForm } from '@angular/forms';
 })
 
 export class DraftComponent {
+  captains = [];
+  captainCount = 1;
+
   AddCaptain(form: NgForm) {
-    console.log(form);
+    this.captains.push(form.value.captain);
+    this.captainCount = this.captains.length;
+    form.reset();
   }
 }
