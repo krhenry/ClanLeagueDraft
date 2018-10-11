@@ -16,4 +16,9 @@ export class DraftComponent {
     this.captainCount = this.captains.length;
     form.reset();
   }
+
+  RemoveCaptain(index) {
+    this.captains.splice(index, 1);
+    this.captainCount = this.captains.length;
+  }
 }

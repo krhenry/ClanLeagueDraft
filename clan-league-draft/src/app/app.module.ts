@@ -15,7 +15,8 @@ import {
   MatExpansionModule,
   MatProgressSpinnerModule,
   MatPaginatorModule,
-  MatGridListModule
+  MatGridListModule,
+  MatIconModule
  } from '@angular/material';
 
 
@@ -36,6 +37,7 @@ import {
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatGridListModule,
+    MatIconModule,
     AppRoutingModule,
     FormsModule
   ],
