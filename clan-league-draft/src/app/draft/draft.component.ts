@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-draft',
@@ -9,16 +9,45 @@ import { NgForm } from '@angular/forms';
 
 export class DraftComponent {
   captains = [];
-  captainCount = 1;
+  players = [];
+  showCapForm = true;
+  showPlayerForm = false;
 
-  AddCaptain(form: NgForm) {
-    this.captains.push(form.value.captain);
-    this.captainCount = this.captains.length;
+  AddPlayer(playerType, form: NgForm) {
+    if (form.valid) {
+      switch (playerType) {
+        case 'cap':
+          this.captains.push(form.value.captain);
+          break;
+        case 'player':
+          this.players.push(form.value.player);
+          break;
+        default:
+          break;
+      }
+    }
     form.reset();
   }
 
-  RemoveCaptain(index) {
-    this.captains.splice(index, 1);
-    this.captainCount = this.captains.length;
+  Remove(playerType, index) {
+    switch (playerType) {
+      case 'cap':
+        this.captains.splice(index, 1);
+        break;
+      case 'player':
+        this.players.splice(index, 1);
+        break;
+      default:
+        break;
+    }
+  }
+
+  FinalizedCaptains() {
+    this.showCapForm = false;
+    this.showPlayerForm = true;
+  }
+
+  FinalizedPlayers() {
+    this.showPlayerForm = false;
   }
 }

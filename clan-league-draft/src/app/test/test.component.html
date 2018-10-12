@@ -1,0 +1,22 @@
+<mat-card>
+  <form *ngIf="showCapForm == true" (submit)="AddCaptain(draftForm)" #draftForm="ngForm">
+    <mat-form-field>
+      <input matInput type="text" ngModel required name="captain" #captain="ngModel"> {{captains}}
+      <mat-error *ngIf="captain.invalid">Enter a captain name</mat-error>
+    </mat-form-field>
+    <button mat-mini-fab color="primary" type="submit"><mat-icon>add</mat-icon></button>
+  </form>
+</mat-card>
+
+
+<div>
+  <mat-list *ngFor="let captain of captains; let i = index">
+    <mat-list-item >{{captain}}
+      <button mat-button (click)="EditCaptain(captain)"><mat-icon>edit</mat-icon></button>
+      <button mat-button (click)="RemoveCaptain(i)"><mat-icon>delete</mat-icon></button>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+  <button mat-button>Finalize Captains</button>
+</div>
+
